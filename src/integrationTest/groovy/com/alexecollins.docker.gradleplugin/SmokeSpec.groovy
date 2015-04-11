@@ -26,4 +26,15 @@ class SmokeSpec extends PluginSpec {
         then:
         noExceptionThrown()
     }
+
+    def "clean with valid definition passes"(){
+        given:
+        makeDefinition("good", "FROM centos", "")
+
+        when:
+        run("clean")
+
+        then:
+        noExceptionThrown()
+    }
 }

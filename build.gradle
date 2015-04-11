@@ -32,19 +32,21 @@ sourceSets {
     }
 }
 
-task integrationTest(type: Test) {
-    dependsOn install
-    testClassesDir = sourceSets.integrationTest.output.classesDir
-    classpath = sourceSets.integrationTest.runtimeClasspath
-    mustRunAfter test
-}
-
-check.dependsOn integrationTest
-
-install {
+task installLocalRepo(type: Upload) {
+    description "Installs the artifacts to a local repo for testing"
+    configuration = configurations['archives']
     repositories {
         mavenDeployer {
             repository(url: localRepoDir.toURI())
         }
     }
 }
+
+task integrationTest(type: Test) {
+    dependsOn installLocalRepo
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    mustRunAfter test
+}
+
+check.dependsOn integrationTest
