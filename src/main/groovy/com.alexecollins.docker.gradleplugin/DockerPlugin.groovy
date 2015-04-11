@@ -7,5 +7,6 @@ class DockerPlugin implements Plugin<Project> {
     void apply(Project project) {
         project.task('validateDocker', type: ValidateTask)
         project.task('cleanDocker', type: CleanTask)
+        project.task('buildDocker', type: BuildTask)
     }
 }
