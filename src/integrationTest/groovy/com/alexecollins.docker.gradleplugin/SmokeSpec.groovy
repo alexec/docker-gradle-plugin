@@ -48,4 +48,15 @@ class SmokeSpec extends PluginSpec {
         then:
         noExceptionThrown()
     }
+
+    def "start with valid definition starts"() {
+        given:
+        makeDefinition("good", "FROM centos", "")
+
+        when:
+        run("startDocker")
+
+        then:
+        noExceptionThrown()
+    }
 }

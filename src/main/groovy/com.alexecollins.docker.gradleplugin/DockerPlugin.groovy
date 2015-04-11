@@ -8,5 +8,6 @@ class DockerPlugin implements Plugin<Project> {
         project.task('validateDocker', type: ValidateTask)
         project.task('cleanDocker', type: CleanTask)
         project.task('buildDocker', type: BuildTask)
+        project.task('startDocker', type: StartTask)
     }
 }
