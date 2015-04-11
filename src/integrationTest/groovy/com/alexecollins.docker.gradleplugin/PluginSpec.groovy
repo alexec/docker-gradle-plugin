@@ -16,13 +16,15 @@ class PluginSpec extends IntegrationSpec {
                         mavenCentral()
                     }
                 }
+
                 dependencies {
                     classpath 'com.alexecollins.docker:docker-gradle-plugin:1.0.0-SNAPSHOT'
                 }
-            configurations.all {
-                resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+
+                configurations.all {
+                    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+                }
             }
-        }
 		"""
 
         dir.newFolder("src", "main", "docker")

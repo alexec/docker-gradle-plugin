@@ -9,7 +9,7 @@ class SmokeSpec extends PluginSpec {
         makeDefinition("garbage", "garbage", "")
 
         when:
-        run("validate")
+        run("validateDocker")
 
         then:
         def e = thrown(BuildException)
@@ -21,7 +21,7 @@ class SmokeSpec extends PluginSpec {
         makeDefinition("good", "FROM centos", "")
 
         when:
-        run("validate")
+        run("validateDocker")
 
         then:
         noExceptionThrown()
@@ -32,7 +32,7 @@ class SmokeSpec extends PluginSpec {
         makeDefinition("good", "FROM centos", "")
 
         when:
-        run("clean")
+        run("cleanDocker")
 
         then:
         noExceptionThrown()

@@ -1,0 +1,14 @@
+apply plugin: 'maven'
+apply plugin: 'com.alexecollins.docker.gradleplugin'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.alexecollins.docker:docker-gradle-plugin:1.0.0-SNAPSHOT'
+    }
+}
+
+

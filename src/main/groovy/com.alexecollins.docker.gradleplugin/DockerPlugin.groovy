@@ -5,7 +5,7 @@ import org.gradle.api.Project
 
 class DockerPlugin implements Plugin<Project> {
     void apply(Project project) {
-        project.task('validate', type: ValidateTask)
-        project.task('clean', type: CleanTask)
+        project.task('validateDocker', type: ValidateTask)
+        project.task('cleanDocker', type: CleanTask)
     }
 }
