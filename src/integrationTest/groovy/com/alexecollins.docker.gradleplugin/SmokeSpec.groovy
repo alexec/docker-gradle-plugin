@@ -18,7 +18,7 @@ class SmokeSpec extends PluginSpec {
 
     def "valid Dockerfile validates"() {
         given:
-        makeDefinition("good", "FROM centos", "")
+        makeGoodDefinition()
 
         when:
         run("validateDocker")
@@ -29,7 +29,7 @@ class SmokeSpec extends PluginSpec {
 
     def "clean with valid definition passes"(){
         given:
-        makeDefinition("good", "FROM centos", "")
+        makeGoodDefinition()
 
         when:
         run("cleanDocker")
@@ -40,7 +40,7 @@ class SmokeSpec extends PluginSpec {
 
     def "build with valid definition builds"() {
         given:
-        makeDefinition("good", "FROM centos", "")
+        makeGoodDefinition()
 
         when:
         run("buildDocker")
@@ -51,12 +51,27 @@ class SmokeSpec extends PluginSpec {
 
     def "start with valid definition starts"() {
         given:
-        makeDefinition("good", "FROM centos", "")
+        makeGoodDefinition()
 
         when:
         run("startDocker")
 
         then:
         noExceptionThrown()
+    }
+
+    def "stop with valid definition stop"() {
+        given:
+        makeGoodDefinition()
+
+        when:
+        run("stopDocker")
+
+        then:
+        noExceptionThrown()
+    }
+
+    private File makeGoodDefinition() {
+        makeDefinition("good", "FROM centos", "")
     }
 }
