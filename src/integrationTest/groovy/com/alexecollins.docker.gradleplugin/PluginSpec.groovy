@@ -27,4 +27,11 @@ class PluginSpec extends IntegrationSpec {
 
         dir.newFolder("src", "main", "docker")
     }
+
+    def makeDefinition(String name, String dockerfileContent, String confContent) {
+        println("creating definition $name")
+        dir.newFolder("src", "main", "docker", name)
+        new File(dir.root, "src/main/docker/$name/Dockerfile") << dockerfileContent
+        new File(dir.root, "src/main/docker/$name/conf.yml") << confContent
+    }
 }
